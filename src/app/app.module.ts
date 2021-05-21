@@ -83,7 +83,7 @@ import {HIGHLIGHT_OPTIONS, HighlightModule} from 'ngx-highlightjs';
 import {MatSelectModule} from '@angular/material/select';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {CKEditorModule} from '@ckeditor/ckeditor5-angular';
-
+import { NamedRouterLinkDirective } from './_helpers/named-router-link.directive';
 @NgModule({
     declarations: [
         AppComponent,
@@ -137,6 +137,7 @@ import {CKEditorModule} from '@ckeditor/ckeditor5-angular';
         LeaderBoardComponent,
         SubmissionViewComponent,
         ActivationEmailComponent,
+        NamedRouterLinkDirective,
     ],
     imports: [
         BrowserModule,

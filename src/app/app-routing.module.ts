@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
+import {RouterModule} from '@angular/router';
 import {ContactComponent} from './components/contact/contact.component';
 import {LandingPageComponent} from './components/landing-page/landing-page.component';
 import {SampleQuestionsComponent} from './components/sample-questions/sample-questions.component';
@@ -26,114 +26,138 @@ import {ProblemEditComponent} from '@app/components/problems/problem-edit/proble
 import {ProblemCreateComponent} from '@app/components/problems/problem-create/problem-create.component';
 import {ActivationEmailComponent} from '@app/components/accounts/activation-email/activation-email.component';
 import {SubmissionViewComponent} from '@app/components/problems/submission-view/submission-view.component';
+import {NamedRoute} from "@app/_helpers/named-route.interface";
 
 
-const routes: Routes = [
+const routes: NamedRoute[] = [
     {
         path: '',
         pathMatch: 'full',
         component: LandingPageComponent,
+        name: 'landing'
     },
     {
         path: 'contact',
-        component: ContactComponent
+        component: ContactComponent,
+        name: 'contact'
     },
     {
         path: 'sample-questions',
-        component: SampleQuestionsComponent
+        component: SampleQuestionsComponent,
+        name: 'sampleQuestions'
     },
     {
         path: 'topics',
-        component: TopicsComponent
+        component: TopicsComponent,
+        name: 'topics'
     },
     {
         path: 'token-values',
-        component: TokenValuesComponent
+        component: TokenValuesComponent,
+        name: 'tokenValues'
     },
     {
         path: 'course/:courseId/category/:categoryId',
-        component: UserStatsComponent
+        component: UserStatsComponent,
+        name: 'userStats'
     },
     {
         path: 'accounts/login',
-        component: LoginComponent
+        component: LoginComponent,
+        name: 'login'
     },
     {
         path: 'homepage',
         component: HomepageComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        name: 'homepage'
     },
     {
         path: 'actions',
-        component: UserActionsComponent
+        component: UserActionsComponent,
+        name: 'actions'
     },
     {
         path: 'faq',
-        component: FaqComponent
+        component: FaqComponent,
+        name: 'faq'
     },
     {
         path: 'accounts/register',
-        component: RegisterComponent
+        component: RegisterComponent,
+        name: 'register'
     },
     {
         path: 'accounts/profile',
         component: ProfileDetailsComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        name: 'profile'
     },
     {
         path: 'accounts/reset-password',
         component: ResetPasswordComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        name: 'resetPassword'
     },
     {
         path: 'accounts/consent-form',
         component: ConsentFormComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        name: 'consentForm'
     },
     {
         path: 'accounts/activate/:uuid/:token',
         component: ActivationEmailComponent,
+        name: 'activationEmail'
     },
     {
         path: 'course',
         pathMatch: 'full',
         component: CourseListComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        name: 'courseList'
     },
     {
         path: 'course/register/:courseId',
         component: CourseRegisterComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        name: 'courseRegister'
     },
     {
         path: 'course/view/:courseId',
         component: CourseComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        name: 'courseView'
     },
     {
         path: 'course/:courseId/new-event',
         component: CourseEventCreateEditComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        name: 'courseEventCreate'
     },
     {
         path: 'course/:courseId/new-event/:eventId',
         component: CourseEventCreateEditComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        name: 'courseEventEdit'
     },
     {
         path: 'course/:courseId/event/:eventId',
         component: CourseQuestionSnippetComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        name: 'courseEvent'
     },
     {
         path: 'problems',
         component: ProblemSetComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        name: 'problemSet'
     },
     {
         path: 'problem/:id',
         component: ProblemViewComponent,
         canActivate: [AuthGuard],
+        name: 'problemView'
     },
     {
         path: 'course/:courseId',
@@ -146,17 +170,20 @@ const routes: Routes = [
     {
         path: 'problem/:id/edit',
         component: ProblemEditComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        name: 'problemEdit'
     },
     {
         path: 'problem/create/:type',
         component: ProblemCreateComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        name: 'problemCreate'
     },
     {
         path: 'problem/submission/:id',
         component: SubmissionViewComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        name: 'problemSubmit'
     }
 ];
 
