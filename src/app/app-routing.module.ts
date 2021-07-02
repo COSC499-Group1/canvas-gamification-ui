@@ -18,6 +18,7 @@ import {CourseRegisterComponent} from '@app/components/course/course-registratio
 import {ProblemViewComponent} from '@app/problems/problem-view/problem-view.component';
 import {NotFoundComponent} from '@app/components/general/not-found/not-found.component';
 import {ForbiddenComponent} from '@app/components/general/forbidden/forbidden.component';
+
 import {LeaderboardComponent} from "./components/leaderboard/leaderboard.component";
 
 
@@ -58,7 +59,13 @@ const routes: Routes = [
         path: 'homepage',
         component: HomepageComponent,
         canActivate: [AuthGuard]
-    }, 
+    },
+    {
+        path: 'leader-board',
+        pathMatch: 'full',
+        component: LeaderboardComponent
+    },
+    
     {
         path: 'actions',
         component: UserActionsComponent
