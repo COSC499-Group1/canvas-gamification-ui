@@ -1,6 +1,7 @@
+import { User } from "./user";
+
 export interface LeaderBoard{
-    course_id: number;
-    student_id: number;
-    tokens: number;
-    visable: boolean;
+    leaderboarname: string;
+    course: string;
+    created_by: User;
 }
