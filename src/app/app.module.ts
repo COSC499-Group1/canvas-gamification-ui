@@ -92,7 +92,7 @@ import {ForbiddenComponent} from './components/general/forbidden/forbidden.compo
         LeaderBoardListComponent,
         NotFoundComponent,
         ForbiddenComponent,
-        LeaderBoardComponent,
+        LeaderBoardStudentComponent,
     ],
     imports: [
         BrowserModule,

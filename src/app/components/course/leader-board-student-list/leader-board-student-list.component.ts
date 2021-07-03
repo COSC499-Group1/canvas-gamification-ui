@@ -30,7 +30,6 @@ export class LeaderBoardStudentComponent {
     this.leaderboardservice.getLeaderBoardStudents().subscribe((studentleaderboards) => {
         this.allStudentLeaderBoard = studentleaderboards;
         this.leaderBoardStudentList = new MatTableDataSource(studentleaderboards);
-        //this.leaderBoardList.sort = this.sort;
     });
 }  
 
