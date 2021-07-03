@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
 import { LeaderBoardService } from '@app/_services/api/leaderboard.service';
@@ -11,10 +11,13 @@ import { LeaderBoard } from '@app/_models';
 })
 export class LeaderBoardListComponent {
 
+  @Input() leaderboards: LeaderBoard[];
+
   leaderBoardList: MatTableDataSource<LeaderBoard>
   allLeaderBoards: LeaderBoard[];
-  displayedColumns: string[] = [' Name', 'Course', 'Created By']
+  displayedColumns: string[] = ['leaderboardname', 'course', 'created_by']
   leaderBoardName: string;
+
 
   //users: TestModel[];
   //topThree : TestModel[] = Array();

@@ -33,12 +33,12 @@ const routes: Routes = [
     {
         path:'leaderboardlist',
         pathMatch: 'full',
-        component: LeaderBoardListComponent,
+        component: LeaderBoardStudentComponent,
     },
     {
         path:'leaderboard',
         pathMatch: 'full',
-        component: LeaderBoardStudentComponent,
+        component: LeaderBoardListComponent,
     },
     {
         path: 'contact',
