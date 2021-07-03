@@ -1,6 +1,5 @@
 
-
-<div class="container podium-container">
+ <div class="container podium-container">
     <!-- <img src='assets/gif/fire.gif' class="streakIcon transparent-absolute">
     <img src='assets/gif/icons8-snow.gif' class="streakIcon transparent-absolute"> -->
     <div class="podium-wrapper" *ngFor="let user of topThree let i = index"  
@@ -37,7 +36,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> 
 
 <div class="container leaderboard-table">
     <div class="leaderboard-header row align-items-center justify-content-center">
@@ -57,8 +56,8 @@
             Tokens
         </div>
     </div>
-    <div *ngFor="let user of users let i = index" class="row align-items-center justify-content-center"
-        (mouseenter)="turnToGif($event)" (mouseleave)="turnToStatic($event)">
+    <div *ngFor="let user of users let i = index" class="row align-items-center justify-content-center">
+         (mouseenter)="turnToGif($event)" (mouseleave)="turnToStatic($event)" 
         <div class="col-1 center-text">
             {{i + 4}}
         </div>

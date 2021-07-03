@@ -19,8 +19,8 @@ import {ProblemViewComponent} from '@app/problems/problem-view/problem-view.comp
 import {NotFoundComponent} from '@app/components/general/not-found/not-found.component';
 import {ForbiddenComponent} from '@app/components/general/forbidden/forbidden.component';
 
-import {LeaderboardComponent} from "./components/leaderboard/leaderboard.component";
-
+import {LeaderBoardListComponent} from "./components/course/leader-board-list/leader-board-list.component";
+import {LeaderBoardStudentComponent} from "./components/course/leader-board-student-list/leader-board-student-list.component";
 
 const routes: Routes = [
     {path: 'accounts', loadChildren: () => import('./accounts/accounts.module').then(m => m.AccountsModule)},
@@ -31,9 +31,14 @@ const routes: Routes = [
         component: LandingPageComponent,
     },
     {
+        path:'leaderboardlist',
+        pathMatch: 'full',
+        component: LeaderBoardListComponent,
+    },
+    {
         path:'leaderboard',
         pathMatch: 'full',
-        component: LeaderboardComponent,
+        component: LeaderBoardStudentComponent,
     },
     {
         path: 'contact',
@@ -60,13 +65,8 @@ const routes: Routes = [
         component: HomepageComponent,
         canActivate: [AuthGuard]
     },
-    {
-        path: 'leader-board',
-        pathMatch: 'full',
-        component: LeaderboardComponent
-    },
-    
-    {
+   
+     {
         path: 'actions',
         component: UserActionsComponent
     },

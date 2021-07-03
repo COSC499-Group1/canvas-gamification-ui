@@ -7,9 +7,10 @@ import{
 } from '@app/_models';
 
 
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { ApiService } from '../api.service';
+import { LeaderBoardStudent } from '@app/_models/leader_board_students';
 
 
 @Injectable({
@@ -24,11 +25,49 @@ export class LeaderBoardService {
 
   }
 
-  getLeaderBoard(): Observable<LeaderBoard> {
+
+
+  getLeaderBoards(registered = false, options?: {
+    filters?: unknown,
+    ordering?: unknown,
+    page?: number,
+    pageSize?: number
+  }): Observable<LeaderBoard[]> {
+    const {filters = {}, ordering = {}, page = 1, pageSize = 50} = options ? options : {};
+    const url = this.apiService.getURL('leaderboardlist');
+    let params = new HttpParams()
+            .set('registered', String(registered))
+            .set('page', String(page))
+            .set('page_size', String(pageSize));
+
+        for (const field of Object.keys(filters)) {
+            params = params.set(`${field}`, String(filters[field]));
+        }
+      
+        const orderingFields = [];
+        for (const field of Object.keys(ordering)) {
+            if (ordering[field]) {
+                orderingFields.push(`${field}`);
+            } else {
+                orderingFields.push(`-${field}`);
+            }
+        }
+        params = params.set(`ordering`, `${orderingFields.join()}`);
+      
+        return this.http
+        .get<LeaderBoard[]>(url, {params})
+        .pipe(
+            catchError(
+                this.apiService.handleError<LeaderBoard[]>(`Unable to load leaders.`, [])
+            )
+        );
+      }
+
+  getLeaderBoardStudents(): Observable<LeaderBoardStudent[]> {
     const url = this.apiService.getURL('leaderboard');
     return this.http
-      .get<LeaderBoard>(url)
-      .pipe(catchError(this.apiService.handleError<LeaderBoard>(`Unable to load leader board`, null)));
+      .get<LeaderBoardStudent[]>(url)
+      .pipe(catchError(this.apiService.handleError<LeaderBoardStudent[]>(`Unable to load leader board`, null)));
   }
   /**
    * Handle Http operation that failed.
