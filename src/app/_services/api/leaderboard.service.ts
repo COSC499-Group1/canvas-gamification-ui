@@ -3,18 +3,22 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
+
 import { ApiService } from '../api.service';
 import { environment } from '@environments/environment';
 import { LeaderBoardStudent } from '@app/_models/leader_board_students';
 import { LeaderBoard } from '@app/_models/leader_board';
 
 
+
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class LeaderBoardService {
+
   private leaderboard_url = new URL('/api/leaderboard', environment.apiBaseUrl).toString();
   private leaderboard_students_url = new URL('/api/leaderboard-students', environment.apiBaseUrl).toString();
+
 
   constructor(
     private http: HttpClient,
@@ -22,6 +26,7 @@ export class LeaderBoardService {
 
   
   }
+
 
 
 
