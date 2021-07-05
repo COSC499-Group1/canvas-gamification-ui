@@ -31,12 +31,12 @@ const routes: Routes = [
         component: LandingPageComponent,
     },
     {
-        path:'leaderboardlist',
+        path:'leaderboard',
         pathMatch: 'full',
         component: LeaderBoardStudentComponent,
     },
     {
-        path:'leaderboard',
+        path:'leaderboardlist',
         pathMatch: 'full',
         component: LeaderBoardListComponent,
     },

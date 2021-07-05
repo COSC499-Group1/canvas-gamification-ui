@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, AfterViewInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
 import { LeaderBoardService } from '@app/_services/api/leaderboard.service';
@@ -9,14 +9,15 @@ import { LeaderBoard } from '@app/_models';
   templateUrl: './leader-board-list.component.html',
   styleUrls: ['./leader-board-list.component.scss']
 })
-export class LeaderBoardListComponent {
+export class LeaderBoardListComponent implements OnInit, AfterViewInit{
 
-  @Input() leaderboards: LeaderBoard[];
+  leaderBoardList: LeaderBoard[];
+  // @Input() leaderboards: LeaderBoard[];
 
-  leaderBoardList: MatTableDataSource<LeaderBoard>
-  allLeaderBoards: LeaderBoard[];
-  displayedColumns: string[] = ['leaderboardname', 'course', 'created_by']
-  leaderBoardName: string;
+  // leaderBoardList: MatTableDataSource<LeaderBoard>
+  // allLeaderBoards: LeaderBoard[];
+  // displayedColumns: string[] = ['leaderboardname', 'course', 'created_by']
+  // leaderBoardName: string;
 
 
   //users: TestModel[];
@@ -24,16 +25,24 @@ export class LeaderBoardListComponent {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private leaderboardService: LeaderBoardService) {
-    this.leaderBoardList = new MatTableDataSource();
+    // this.leaderBoardList = new MatTableDataSource();
+
 
   }
 
+  ngOnInit(): void {
+    this.leaderboardService.getLeaderBoards()
+    .subscribe((leaderboards) => {
+      this.leaderBoardList = leaderboards;
+    })
+  }
+
   ngAfterViewInit(): void {
-    this.leaderboardService.getLeaderBoards().subscribe((leaderboards) => {
-        this.allLeaderBoards = leaderboards;
-        this.leaderBoardList = new MatTableDataSource(leaderboards);
+    // this.leaderboardService.getLeaderBoards().subscribe((leaderboards) => {
+    //     this.allLeaderBoards = leaderboards;
+    //     this.leaderBoardList = new MatTableDataSource(leaderboards);
         //this.leaderBoardList.sort = this.sort;
-    });
+    // });
 }  
 
 
