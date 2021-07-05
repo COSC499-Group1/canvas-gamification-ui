@@ -1,38 +1,35 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
 import { LeaderBoardService } from '@app/_services/api/leaderboard.service';
 import { LeaderBoard } from '@app/_models';
+import { LeaderBoardStudent } from '@app/_models/leader_board_students';
 
 @Component({
   selector: 'app-leaderboard',
-  templateUrl: './leader-board-list.component.html',
-  styleUrls: ['./leader-board-list.component.scss']
+  templateUrl: './leader-board-student-list.component.html',
+  styleUrls: ['./leader-board-student-list.component.scss']
 })
-export class LeaderBoardListComponent {
+export class LeaderBoardStudentComponent {
 
-  @Input() leaderboards: LeaderBoard[];
-
-  leaderBoardList: MatTableDataSource<LeaderBoard>
-  allLeaderBoards: LeaderBoard[];
-  displayedColumns: string[] = ['leaderboardname', 'course', 'created_by']
+  leaderBoardStudentList: MatTableDataSource<LeaderBoardStudent>
+  allStudentLeaderBoard: LeaderBoardStudent[];
+  displayedColumns: string[] = [' Name', 'Course', 'Leader Board', 'Tokens', 'Team', 'Streak']
   leaderBoardName: string;
-
 
   //users: TestModel[];
   //topThree : TestModel[] = Array();
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private leaderboardService: LeaderBoardService) {
-    this.leaderBoardList = new MatTableDataSource();
+  constructor(private leaderboardservice: LeaderBoardService) {
+    this.leaderBoardStudentList = new MatTableDataSource();
 
   }
 
   ngAfterViewInit(): void {
-    this.leaderboardService.getLeaderBoards().subscribe((leaderboards) => {
-        this.allLeaderBoards = leaderboards;
-        this.leaderBoardList = new MatTableDataSource(leaderboards);
-        //this.leaderBoardList.sort = this.sort;
+    this.leaderboardservice.getLeaderBoardStudents().subscribe((studentleaderboards) => {
+        this.allStudentLeaderBoard = studentleaderboards;
+        this.leaderBoardStudentList = new MatTableDataSource(studentleaderboards);
     });
 }  
 
