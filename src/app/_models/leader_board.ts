@@ -3,5 +3,4 @@ export interface LeaderBoardStudents{
     token_value: number;
     team_number: number;
     streak_value: number;
-    //leaderboard_name: string;
 }
