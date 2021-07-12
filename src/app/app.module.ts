@@ -49,7 +49,6 @@ import {
     NgxMatTimepickerModule
 } from '@angular-material-components/datetime-picker';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {LeaderBoardStudentComponent} from "./components/course/leader-board-student-list/leader-board-student-list.component"
 import {LeaderBoardListComponent} from "./components/course/leader-board-list/leader-board-list.component";
 
 //import {SubmissionViewComponent} from '@app/components/problems/submission-view/submission-view.component';
@@ -92,7 +91,6 @@ import {ForbiddenComponent} from './components/general/forbidden/forbidden.compo
         LeaderBoardListComponent,
         NotFoundComponent,
         ForbiddenComponent,
-        LeaderBoardStudentComponent,
     ],
     imports: [
         BrowserModule,

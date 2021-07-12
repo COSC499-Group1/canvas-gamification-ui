@@ -20,7 +20,6 @@ import {NotFoundComponent} from '@app/components/general/not-found/not-found.com
 import {ForbiddenComponent} from '@app/components/general/forbidden/forbidden.component';
 
 import {LeaderBoardListComponent} from "./components/course/leader-board-list/leader-board-list.component";
-import {LeaderBoardStudentComponent} from "./components/course/leader-board-student-list/leader-board-student-list.component";
 
 const routes: Routes = [
     {path: 'accounts', loadChildren: () => import('./accounts/accounts.module').then(m => m.AccountsModule)},
@@ -29,11 +28,6 @@ const routes: Routes = [
         path: '',
         pathMatch: 'full',
         component: LandingPageComponent,
-    },
-    {
-        path:'leaderboard',
-        pathMatch: 'full',
-        component: LeaderBoardStudentComponent,
     },
     {
         path:'leaderboardlist',
